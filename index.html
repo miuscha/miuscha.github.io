@@ -8,6 +8,58 @@
 
 </head>
 <body>
+
+<div style="width: 350px;">
+	<canvas id="canvas1" width="350" height="150"></canvas>
+	<canvas id="canvas2" width="350" height="150"></canvas>
+	<canvas id="canvas3" width="350" height="150"></canvas>
+</div>
+
+<script>
+	var xCoor = 150;
+	var yCoor = 80;
+
+
+	var canvas1 = document.getElementById('canvas1');
+	var ctx = canvas1.getContext("2d");
+
+
+	ctx.fillStyle = "Grey";
+	ctx.beginPath();
+	ctx.arc(xCoor, yCoor, 60, 0, Math.PI * 2, false);
+	//ctx.stroke()
+	ctx.fill();
+
+	
+
+
+	var canvas2 = document.getElementById('canvas2');
+	var ctx2 = canvas2.getContext("2d");
+
+	ctx2.fillStyle = "Grey";
+	ctx2.beginPath();
+	ctx2.arc(xCoor, yCoor, 60, 0, Math.PI * 2, false);
+	//ctx.stroke();
+	ctx2.fill();
+	
+
+
+
+	var canvas3 = document.getElementById('canvas3');
+	var ctx3 = canvas3.getContext("2d");
+
+	ctx3.fillStyle = "Grey";
+	ctx3.beginPath();
+	ctx3.arc(xCoor, yCoor, 60, 0, Math.PI * 2, false);
+	//ctx.stroke();
+	ctx3.fill();
+
+
+
+	
+
+</script>
+
 <h1> <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam voluptates eveniet qui sapiente sequi aliquid, veritatis fuga, non nisi ratione consequuntur asperiores, sit aliquam ducimus incidunt assumenda soluta nulla velit.</div>
 <div>Et voluptate exercitationem, aperiam nobis harum quia sed ratione assumenda omnis voluptatum neque dignissimos tempora sit mollitia, laboriosam deleniti veniam soluta ut repudiandae. Illo neque vitae nulla consequatur. Vitae, omnis.</div>
 <div>Sint suscipit corrupti sunt, magni corporis ex aspernatur molestiae veritatis maiores dolorem adipisci temporibus aut nulla dicta laboriosam autem consequuntur sequi, blanditiis id cupiditate debitis ratione illo repellat. Aliquid, sit.</div>
