@@ -18,53 +18,117 @@
 <script>
 	
 
+//var drawRedInterv = setInterval(drawRed, 5000, "canvas1");
 
-function drawRed() {
+function drawRed(lightColoured) {
 
+	var canvas = document.getElementById("canvas1");
+	var ctx = canvas.getContext("2d");
+	ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-	var canvas1 = document.getElementById("canvas1");
-	var ctx = canvas1.getContext("2d");
-	ctx.fillStyle = "LightGrey";
-	ctx.strokeStyle = "Black";
 	ctx.beginPath();
 	ctx.arc(150, 80, 60, 0, Math.PI * 2, false);
-	//ctx.stroke()
+	ctx.stroke();
+
+	if (lightColoured)
+		ctx.fillStyle ="Red";
+	else
+		ctx.fillStyle = "LightGrey";
+
 	ctx.fill();
 }
-	window.onload = drawRed();
+		
+function drawYellow(lightColoured) {
 
+	var canvas = document.getElementById("canvas2");
+	var ctx = canvas.getContext("2d");
+	ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+	ctx.beginPath();
+	ctx.arc(150, 80, 60, 0, Math.PI * 2, false);
+	ctx.stroke();
+
+	if (lightColoured)
+		ctx.fillStyle ="Yellow";
+	else
+		ctx.fillStyle = "LightGrey";
+
+	ctx.fill();
+}
+
+function drawGreen(lightColoured) {
+
+	var canvas = document.getElementById("canvas3");
+	var ctx = canvas.getContext("2d");
+	ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+	ctx.beginPath();
+	ctx.arc(150, 80, 60, 0, Math.PI * 2, false);
+	ctx.stroke();
+
+	if (lightColoured)
+		ctx.fillStyle ="Green";
+	else
+		ctx.fillStyle = "LightGrey";
+
+	ctx.fill();
+}
+
+function setIntervalX(callback, delay, repetitions) {
+    var x = 0;
+    var intervalID = window.setInterval(function () {
+
+       callback();
+
+       if (++x === repetitions) {
+           window.clearInterval(intervalID);
+       }
+    }, delay);
+}
+
+window.onload = startCycle();
+
+function startCycle()
+{
+	drawRed(true);
+	drawYellow(false);
+	drawGreen(false);
+
+	setTimeout(drawYellow, 2000, true);
 	
-	function drawYellow() {
+	setTimeout(function() {
+		drawRed(false);
+		drawYellow(false);
+		drawGreen(true);
+	}, 3500);
 
-	var canvas2 = document.getElementById("canvas2");
-	var ctx2 = canvas2.getContext("2d");
+	setTimeout(function() {
+		var greenEnabled = true;
 
-	ctx2.fillStyle = "LightGrey";
-	ctx2.strokeStyle = "Black";
-	ctx2.beginPath();
-	ctx2.arc(150, 80, 60, 0, Math.PI * 2, false);
-	//ctx.stroke();
-	ctx2.fill();
+		setIntervalX(function ()
+		{
+			greenEnabled = !greenEnabled;
+			drawGreen(greenEnabled);
+		}, 500, 4);
+
+		setTimeout(function() {
+			drawGreen(false);
+			drawYellow(true);
+			setTimeout(function () {
+				startCycle();
+			}, 1000);
+		}, 2500);
+	}, 5500);
 }
-	window.onload = drawYellow();
 
+/*function startCountdown(seconds){
+  var counter = seconds;
 
-
-function drawGreen() {
-
-	var canvas3 = document.getElementById("canvas3");
-	var ctx3 = canvas3.getContext("2d");
-
-	ctx3.fillStyle = "LightGrey";
-	ctx3.strokeStyle = "Black";
-	ctx3.beginPath();
-	ctx3.arc(150, 80, 60, 0, Math.PI * 2, false);
-	//ctx.stroke();
-	ctx3.fill();
-}
-window.onload = drawGreen();
-
-
+  var interval = setInterval(() {
+    console.log(counter);
+    counter--;
+  }, 1000);
+};*/
 	
 
 </script>
