@@ -6,20 +6,79 @@
 	<title>Document</title>
 	<link rel="shortcut icon" type="image/png" href="https://img.icons8.com/flat_round/24/000000/traffic-light.png">
 
+	<style type="text/css">
+
+   .block1 { 
+   	width: 200px; 
+    background: #2F4F4F;
+    padding: 5px;
+    border: solid 5px black; 
+    border-radius: 45px;
+    border: solid 5px black; 
+    position: relative; 
+    float: left;
+    top:0;
+    left:0;
+}
+	.clock { 
+   	width: 100px; 
+    background: #2F4F4F;
+    padding: 5px;
+    border: solid 5px black; 
+    border-radius: 20px;
+    position: relative; 
+    float: left;
+    top: 500px;
+    left:-210px;
+    font-size: 22px;
+    font-family: Orbitron;
+    letter-spacing: 1px;
+
+ }
+   .block3 { 
+    width: 200px; 
+    background: #2F4F4F; 
+    padding: 5px; 
+    border: solid 5px black; 
+    border-radius: 45px;
+    float: right; 
+    position: relative; 
+    top: 0px; 
+    right: 400px;
+ }
+
+</style>
 </head>
 <body>
 
-<div style="width: 350px;">
-	<canvas id="canvas1" width="350" height="150"></canvas>
-	<canvas id="canvas2" width="350" height="150"></canvas>
-	<canvas id="canvas3" width="350" height="150"></canvas>
+
+
+<div class="block1" style="width: 260px;">
+
+	<canvas id="canvas1" align="center" width="260" height="150"></canvas>
+	<canvas id="canvas2" align="center" width="260" height="150"></canvas>
+	<canvas id="canvas3" align="center" width="260" height="150"></canvas>
 </div>
+
+<div class="clock" style="width: 100px;"span id="time"></span>
+	<canvas id="canvasTablo" align="center" width="130" height="75"></canvas>
+</div>
+
+<div class="block3"style="width: 260px;">	
+
+	<canvas id="canvas4" align="center" width="260" height="150"></canvas>
+	<canvas id="canvas5" align="center" width="260" height="150"></canvas>
+	<canvas id="canvas6" align="center" width="260" height="150"></canvas>
+
+</div>
+
+
 
 <script>
 	
 
 
-
+//functions help create first traffic light <div>Сloses in <span id="time">05:00</span> minutes!</div> <div><span id="time"></span></div>
 function drawRed(lightColoured) {
 
 	var canvas = document.getElementById("canvas1");
@@ -27,13 +86,13 @@ function drawRed(lightColoured) {
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
 
 	ctx.beginPath();
-	ctx.arc(150, 80, 60, 0, Math.PI * 2, false);
+	ctx.arc(130, 80, 60, 0, Math.PI * 2, false);
 	ctx.stroke();
 
 	if (lightColoured)
 		ctx.fillStyle ="Red";
 	else
-		ctx.fillStyle = "LightGrey";
+		ctx.fillStyle = "#001f3f";
 
 	ctx.fill();
 }
@@ -45,13 +104,13 @@ function drawYellow(lightColoured) {
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
 
 	ctx.beginPath();
-	ctx.arc(150, 80, 60, 0, Math.PI * 2, false);
+	ctx.arc(130, 80, 60, 0, Math.PI * 2, false);
 	ctx.stroke();
 
 	if (lightColoured)
 		ctx.fillStyle ="Yellow";
 	else
-		ctx.fillStyle = "LightGrey";
+		ctx.fillStyle = "#001f3f";
 
 	ctx.fill();
 }
@@ -63,37 +122,98 @@ function drawGreen(lightColoured) {
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
 
 	ctx.beginPath();
-	ctx.arc(150, 80, 60, 0, Math.PI * 2, false);
+	ctx.arc(130, 80, 60, 0, Math.PI * 2, false);
 	ctx.stroke();
 
 	if (lightColoured)
 		ctx.fillStyle ="Green";
 	else
-		ctx.fillStyle = "LightGrey";
+		ctx.fillStyle = "#001f3f";
 
 	ctx.fill();
 }
 
+function drawTablo(CountDown) {
+
+	var canvas = document.getElementById("canvasTablo");
+	var ctx = canvas.getContext("2d");
+	ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+	ctx.beginPath();
+	ctx.arc(130, 80, 60, 0, Math.PI * 2, false);
+	ctx.stroce();
+}
+
+//functions help to create second traffic light
+function drawRed2(lightColoured) {
+
+	var canvas = document.getElementById("canvas4");
+	var ctx = canvas.getContext("2d");
+	ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+	ctx.beginPath();
+	ctx.arc(130, 80, 60, 0, Math.PI * 2, false);
+	ctx.stroke();
+
+	if (lightColoured)
+		ctx.fillStyle ="Red";
+	else
+		ctx.fillStyle = "#001f3f";
+
+	ctx.fill();
+}
+		
+function drawYellow2(lightColoured) {
+
+	var canvas = document.getElementById("canvas5");
+	var ctx = canvas.getContext("2d");
+	ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+	ctx.beginPath();
+	ctx.arc(130, 80, 60, 0, Math.PI * 2, false);
+	ctx.stroke();
+
+	if (lightColoured)
+		ctx.fillStyle ="Yellow";
+	else
+		ctx.fillStyle = "#001f3f";
+
+	ctx.fill();
+}
+
+function drawGreen2(lightColoured) {
+
+	var canvas = document.getElementById("canvas6");
+	var ctx = canvas.getContext("2d");
+	ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+	ctx.beginPath();
+	ctx.arc(130, 80, 60, 0, Math.PI * 2, false);
+	ctx.stroke();
+
+	if (lightColoured)
+		ctx.fillStyle ="Green";
+	else
+		ctx.fillStyle = "#001f3f";
+
+	ctx.fill();
+}
+//setinterval for the first traffic light
 function setIntervalX(callback, delay, repetitions) {
     var x = 0;
     var intervalID = window.setInterval(function () {
-
        callback();
-
        if (++x === repetitions) {
            window.clearInterval(intervalID);
        }
     }, delay);
 }
-
 window.onload = startCycle();
-
 function startCycle()
 {
 	drawRed(true);
 	drawYellow(false);
 	drawGreen(false);
-
 	setTimeout(drawYellow, 2000, true);
 	
 	setTimeout(function() {
@@ -101,16 +221,13 @@ function startCycle()
 		drawYellow(false);
 		drawGreen(true);
 	}, 3500);
-
 	setTimeout(function() {
 		var greenEnabled = true;
-
 		setIntervalX(function ()
 		{
 			greenEnabled = !greenEnabled;
 			drawGreen(greenEnabled);
 		}, 500, 4);
-
 		setTimeout(function() {
 			drawGreen(false);
 			drawYellow(true);
@@ -121,12 +238,93 @@ function startCycle()
 	}, 5500);
 }
 
-
+//setinterval for the second traffic light
+function setIntervalY(callback, delay, repetitions) {
+    var y = 0;
+    var intervalID = window.setInterval(function () {
+       callback();
+       if (++y === repetitions) {
+           window.clearInterval(intervalID);
+       }
+    }, delay);
+}
+window.onload = startCycleY();
+function startCycleY()
+{
+	drawRed2(true);
+	drawYellow2(false);
+	drawGreen2(false);
+	setTimeout(drawYellow2, 2000, true);
 	
+	setTimeout(function() {
+		drawRed2(false);
+		drawYellow2(false);
+		drawGreen2(true);
+	}, 3500);
+	setTimeout(function() {
+		var greenEnabled = true;
+		setIntervalY(function ()
+		{
+			greenEnabled = !greenEnabled;
+			drawGreen2(greenEnabled);
+		}, 500, 4);
+		setTimeout(function() {
+			drawGreen2(false);
+			drawYellow2(true);
+			setTimeout(function () {
+				startCycleY();
+			}, 1000);
+		}, 2500);
+	}, 5500);
+}
+//countdown timer for second traffic light
+function startTimer(duration, display) {
+    var timer = duration, minutes, seconds;
+    setInterval(function () {
+        minutes = parseInt(timer / 60, 10)
+        seconds = parseInt(timer % 60, 10);
 
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.textContent = minutes + ":" + seconds;
+
+        if (--timer < 0) {
+            timer = duration;
+        }
+    }, 1000);
+}
+
+window.onload = function () {
+    var fiveMinutes = 60 * 1,
+        display = document.querySelector('#time');
+    startTimer(fiveMinutes, display);
+};
+
+//countdown timer for first traffic light
+function startTimer(duration, display) {
+    var timer = duration, /*minutes, */seconds;
+    setInterval(function () {
+        //minutes = parseInt(timer / 60, 10)
+        seconds = parseInt(timer % 60, 10);
+
+        //minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.textContent = /*minutes + ":" + */seconds;
+
+        if (--timer < 0) {
+            timer = duration;
+        }
+    }, 1000);
+}
+
+window.onload = function () {
+    var fiveMinutes = 60 * 1,
+        display = document.querySelector('#time');
+    startTimer(fiveMinutes, display);
+};
+	
 </script>
-
-
-
 </body>
 </html>
