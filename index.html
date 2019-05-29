@@ -249,7 +249,7 @@ function setIntervalY(callback, delay, repetitions) {
     }, delay);
 }
 window.onload = startCycleY();
-function startCycleY()
+/*function startCycleY()
 {
 	drawRed2(true);
 	drawYellow2(false);
@@ -276,7 +276,38 @@ function startCycleY()
 			}, 1000);
 		}, 2500);
 	}, 5500);
+}*/
+function startCycleY()
+{
+	drawRed2(false);                                                             
+	drawYellow2(false);
+	drawGreen2(true);
+
+setTimeout(function() {
+		var greenEnabled = true;
+		setIntervalY(function ()
+		{
+			greenEnabled = !greenEnabled;
+			drawGreen2(greenEnabled);
+		}, 500, 4);
+
+setTimeout(function() {
+			drawGreen2(false);
+			drawYellow2(true);
+			setTimeout(function () {
+				startCycleY();
+			}, 1000);
+	
+	setTimeout(function() {
+		drawRed2(true);
+		drawYellow2(false);
+		drawGreen2(false);
+		setTimeout(drawYellow2, 2000, true);
+	}, 2000);
+}, 2500);
+}, 5500);
 }
+
 //countdown timer for second traffic light
 function startTimer(duration, display) {
     var timer = duration, minutes, seconds;
